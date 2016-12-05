@@ -245,6 +245,7 @@ curl -X GET "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/clas
 ```
 
 それでは、さっそく先程のカレーを投入!!
+
 ![curry](test_curry.jpg)
 
 ```
@@ -299,6 +300,7 @@ curl -X POST -F "images_file=@test_curry.jpg" -F "parameters=@params-new.json" "
 カレー、というスコアが0.858555という高得点で他の追随を許しませんでした！成功です！
 
 それでは次にハヤシライス。これは難しそうだ・・・。
+
 ![hayashi](test_hayashi.jpg)
 
 
@@ -353,6 +355,7 @@ curl -X POST -F "images_file=@test_hayashi.jpg" -F "parameters=@params-new.json"
 ```
 おぉ！ハヤシライスが0.95124という高得点がでました！
 最後はカツカレー！
+
 ![katsu_curry](test_katsuc.jpg)
 
 ```
