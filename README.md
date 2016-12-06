@@ -49,7 +49,7 @@ M
 Terminalを立ち上げ、画像のあるフォルダから以下のコマンドでカレーの画像を読み込ませてテストしてみます。
 
 ```
-curl -X POST -F "images_file=@test_curry.jpg" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?{api_key}&version=2016-05-20"
+curl -X POST -F "images_file=@test_curry.jpg" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key={api_key}&version=2016-05-20"
 ```
 
 結果のほどは・・・。
@@ -88,7 +88,7 @@ curl -X POST -F "images_file=@test_curry.jpg" "https://gateway-a.watsonplatform.
 [参考にしたサイトはこちら。](http://qiita.com/mfujita/items/a6bfcffae8097807f6a0)
 
 ```
-curl -X POST -F "curry_positive_examples=@Curry.zip" -F "negative_examples=@Others.zip" -F "name=food" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers?{api_key}&version=2016-05-20"
+curl -X POST -F "curry_positive_examples=@Curry.zip" -F "negative_examples=@Others.zip" -F "name=food" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers?api_key={api_key}&version=2016-05-20"
 ```
 
 結果、吐き出されたWatsonのレスポンスは以下の通り。statusがtrainingになっています。
@@ -107,7 +107,7 @@ curl -X POST -F "curry_positive_examples=@Curry.zip" -F "negative_examples=@Othe
 少し経ってから、以下のコマンドで進行状況をチェックしてみます。（classifier_idおよび、api_keyは各自のものをご利用ください。）
 
 ```
-curl -X GET "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers/{classifier_id}?{api_key}&version=2016-05-20"
+curl -X GET "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers/{classifier_id}?api_key={api_key}&version=2016-05-20"
 ```
 結果は、以下の通り。
 ```
@@ -135,7 +135,7 @@ statusがreadyになっているのでこれで行けそうです。カレーを
 先程のカレーを認識できるかテストしてみましょう！
 
 ```
-curl -X POST -F "images_file=@test_curry.jpg" -F "parameters=@params-curry.json" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?{api_key}&version=2016-05-20"
+curl -X POST -F "images_file=@test_curry.jpg" -F "parameters=@params-curry.json" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key={api_key}&version=2016-05-20"
 ```
 
 果たして結果は・・。
@@ -190,13 +190,13 @@ curl -X POST -F "images_file=@test_curry.jpg" -F "parameters=@params-curry.json"
 （classifier_idsとapi_keyは各自のものをご利用ください。）
 
 ```
-curl -X DELETE "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers/food_aaaaaaaaa?{api_key}&version=2016-05-20"
+curl -X DELETE "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers/food_aaaaaaaaa?api_key={api_key}&version=2016-05-20"
 ```
 
 このあとカレーの識別クラスとハヤシライスの識別クラス、カツカレーの識別クラスを学習させます。
 
 ```
-curl -X POST -F "curry_positive_examples=@Curry.zip" -F "hayashi_positive_examples=@Hayashi.zip" -F "katsu_curry_positive_examples=@KatsuC.zip" -F "negative_examples=@Others.zip" -F "name=food" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers?{api_key}&version=2016-05-20"
+curl -X POST -F "curry_positive_examples=@Curry.zip" -F "hayashi_positive_examples=@Hayashi.zip" -F "katsu_curry_positive_examples=@KatsuC.zip" -F "negative_examples=@Others.zip" -F "name=food" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers?api_key{api_key}&version=2016-05-20"
 ```
 
 ・・・どうだ。Watsonから学習しているとの応答あり。
@@ -219,7 +219,7 @@ curl -X POST -F "curry_positive_examples=@Curry.zip" -F "hayashi_positive_exampl
 さきほど同様にステータスチェック。（classifier_idは各自のものをご利用ください。）
 
 ```
-curl -X GET "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers/{classifier_id}?{api_key}&version=2016-05-20"
+curl -X GET "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers/{classifier_id}?api_key={api_key}&version=2016-05-20"
 ```
 
 ```
@@ -249,7 +249,7 @@ curl -X GET "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/clas
 ![curry](test_curry.jpg)
 
 ```
-curl -X POST -F "images_file=@test_curry.jpg" -F "parameters=@params-new.json" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?{api_key}&version=2016-05-20"
+curl -X POST -F "images_file=@test_curry.jpg" -F "parameters=@params-new.json" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key={api_key}&version=2016-05-20"
 ```
 
 実行結果は・・・。
@@ -305,7 +305,7 @@ curl -X POST -F "images_file=@test_curry.jpg" -F "parameters=@params-new.json" "
 
 
 ```
-curl -X POST -F "images_file=@test_hayashi.jpg" -F "parameters=@params-new.json" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?{api_key}&version=2016-05-20"
+curl -X POST -F "images_file=@test_hayashi.jpg" -F "parameters=@params-new.json" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key{api_key}&version=2016-05-20"
 ```
 
 人間でも見分けるのが一瞬迷うが果たして結果は・・。
@@ -359,7 +359,7 @@ curl -X POST -F "images_file=@test_hayashi.jpg" -F "parameters=@params-new.json"
 ![katsu_curry](test_katsuc.jpg)
 
 ```
-curl -X POST -F "images_file=@test_katsuc.jpg" -F "parameters=@params-new.json" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?{api_key}&version=2016-05-20"
+curl -X POST -F "images_file=@test_katsuc.jpg" -F "parameters=@params-new.json" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key={api_key}&version=2016-05-20"
 ```
 
 この結果も・・・。
