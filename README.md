@@ -196,7 +196,7 @@ curl -X DELETE "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/c
 このあとカレーの識別クラスとハヤシライスの識別クラス、カツカレーの識別クラスを学習させます。
 
 ```
-curl -X POST -F "curry_positive_examples=@Curry.zip" -F "hayashi_positive_examples=@Hayashi.zip" -F "katsu_curry_positive_examples=@KatsuC.zip" -F "negative_examples=@Others.zip" -F "name=food" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers?api_key{api_key}&version=2016-05-20"
+curl -X POST -F "curry_positive_examples=@Curry.zip" -F "hayashi_positive_examples=@Hayashi.zip" -F "katsu_curry_positive_examples=@KatsuC.zip" -F "negative_examples=@Others.zip" -F "name=food" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers?api_key={api_key}&version=2016-05-20"
 ```
 
 ・・・どうだ。Watsonから学習しているとの応答あり。
